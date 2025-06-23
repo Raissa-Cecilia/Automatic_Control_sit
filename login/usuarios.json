@@ -1,0 +1,10 @@
+{
+  "usuarios": [
+    {
+      "nome": "Admin",
+      "email": "admin@empresa.com",
+      "senha": "admin123",
+      "tipo": "admin"
+    }
+  ]
+}

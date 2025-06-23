@@ -1,0 +1,47 @@
+/* Estilo base do container do sino */
+.notificacao-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Pop-up de notificações (invisível por padrão) */
+#popup-notificacoes {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 35px;
+  width: 280px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+/* Quando ativo, mostra o pop-up */
+#popup-notificacoes.ativo {
+  display: block;
+}
+
+/* Lista de notificações */
+#popup-notificacoes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Notificação individual */
+#popup-notificacoes ul li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  color: #022859; /* azul do seu site */
+  font-size: 0.95rem;
+}
+
+/* Última notificação sem borda */
+#popup-notificacoes ul li:last-child {
+  border-bottom: none;
+}
+

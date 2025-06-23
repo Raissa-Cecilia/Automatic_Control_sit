@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Produtos</title>
+  <link rel="stylesheet" href="relatorio.css">
+  <script defer src="relatorio.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="topo">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" width="50">
+        <h1><span style="color:#FFFFFF">Automatic</span> <span style="color:#F2B138">Control</span></h1>
+      </div>
+      <div class="icons">
+        <span>❔ 🔔 👤</span>
+      </div>
+    </header>
+
+    <nav class="menu-lateral">
+      <ul>
+        <li><a href="../cadastro/cadastroP.html">Cadastros</a></li>
+        <li><a href="../grafico/grafico.html">Gráficos</a></li>
+        <li class="ativo"><a href="../relatorio/relatorio.html">Relatórios</a></li>
+        <li><a href="../configuracao/configuracao.html">Configurações</a></li>
+      </ul>
+    </nav>
+
+    <main class="conteudo">
+      <h2>Produtos</h2>
+
+      <div class="filtros">
+        <label>Categoria
+          <select id="categoria">
+            <option value="todas">Todas</option>
+          </select>
+        </label>
+        <label>Estoque
+          <select id="estoque">
+            <option value="todos">Todos</option>
+            <option value="baixo">Abaixo do mínimo</option>
+            <option value="ok">Acima do mínimo</option>
+          </select>
+        </label>
+        <button id="pesquisar">Pesquisar</button>
+      </div>
+
+      <div class="controle-tabela">
+        <label>Mostrar
+          <select id="itens-por-pagina">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+          </select>
+        </label>
+        <button onclick="exportarTabela()">Exportar/Imprimir</button>
+      </div>
+
+      <table id="tabela-produtos">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Estoque</th>
+            <th>Mínimo</th>
+            <th>Data de Fabricação</th>
+            <th>Data de Vencimento</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>Total</strong></td>
+            <td id="total-produtos">0</td>
+            <td colspan="4"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </main>
+
+    <footer>
+      <p>© 2025 Automatic Control — Todos os direitos reservados.</p>
+    </footer>
+  </div>
+</body>
+</html>

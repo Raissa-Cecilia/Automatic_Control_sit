@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Automatic Control</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+
+    .left {
+      width: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: 80px;
+      border-bottom-right-radius: 80px;
+    }
+
+    .left h1 {
+      font-size: 2.5rem;
+      color: #0A2A5C;
+    }
+
+    .left h1 span {
+      color: #f4b431;
+    }
+
+    .left img {
+      width: 180px;
+      margin-top: 30px;
+    }
+
+    .right {
+      width: 50%;
+      background-color: #0A2A5C;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 300px;
+    }
+
+    label {
+      color: white;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn {
+      padding: 10px;
+      background-color: #f4b431;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e3a021;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 0.8rem;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <h1>Automatic<span>.Control</span></h1>
+    <img src="logo.jpeg" alt="Logo">
+  </div>
+
+  <div class="right">
+    <form class="form-container" onsubmit="login(event)">
+      <label for="email">Login</label>
+      <input type="email" id="email" placeholder="email" required>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" placeholder="senha" required>
+
+      <label for="tipo">Tipo de usuário</label>
+      <select id="tipo" required>
+        <option value="">Selecione</option>
+        <option value="admin">Administrador</option>
+        <option value="funcionario">Funcionário</option>
+      </select>
+
+      <button class="btn" type="submit">Acessar</button>
+      <a class="link" href="primeiroAcesso.html">PRIMEIRO ACESSO</a>
+    </form>
+  </div>
+
+<script>
+  function login(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
+    const tipo = document.getElementById('tipo').value;
+
+    if (!email || !senha || !tipo) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    fetch('../usuarios.json')
+      .then(response => response.json())
+      .then(data => {
+        const usuarios = data.usuarios;
+        const usuario = usuarios.find(u => 
+          u.email === email && u.senha === senha && u.tipo === tipo
+        );
+
+        if (usuario) {
+          sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+          window.location.href = "../home-page/Home-Page.html";
+        } else {
+          const usuariosLocal = JSON.parse(localStorage.getItem('usuarios')) || [];
+          const usuarioLocal = usuariosLocal.find(u => 
+            u.email === email && u.senha === senha && u.tipo === tipo
+          );
+
+          if (usuarioLocal) {
+            sessionStorage.setItem('usuarioLogado', JSON.stringify(usuarioLocal));
+            window.location.href = "../home-page/Home-Page.html";
+          } else {
+            alert("Credenciais inválidas ou usuário não encontrado!");
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        const usuario = usuarios.find(u => 
+          u.email === email && u.senha === senha && u.tipo === tipo
+        );
+
+        if (usuario) {
+          sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+          window.location.href = "../home-page/Home-Page.html";
+        } else {
+          alert("Credenciais inválidas ou usuário não encontrado!");
+        }
+      });
+  }
+</script>
+
+</body>
+</html>

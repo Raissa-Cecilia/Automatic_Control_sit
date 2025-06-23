@@ -1,0 +1,92 @@
+.help-btn {
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #ffffff;
+  border: 1px solid #022859;
+  background-color: #F2B138;
+  font-weight: bold;
+}
+
+.notification-icon,
+.profile-icon {
+  font-size: 2rem;
+  color: #F2B138;
+  cursor: pointer;
+}
+
+.nav-link {
+  color: #fff;
+  transition: color 0.3s;
+}
+.nav-link:hover,
+.nav-link:hover i,
+.nav-link:hover div {
+  color: #F2B138;
+  cursor: pointer;
+}
+.secao-configuracao {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .secao-configuracao h5 {
+      color: #022859;
+      border-bottom: 2px solid #F2B138;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .opcao-configuracao {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .opcao-configuracao:last-child {
+      border-bottom: none;
+    }
+    
+    .opcao-configuracao label {
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+    
+    .botao-salvar {
+      background-color: #022859;
+      color: white;
+      padding: 10px 25px;
+      font-weight: 500;
+    }
+    
+    .botao-salvar:hover {
+      background-color: #011b42;
+      color: white;
+    }
+    
+    .opcao-cor-tema {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .opcao-cor-tema.ativa {
+      border-color: #333;
+    }
+    
+    .container-opcoes-cores {
+      display: flex;
+      align-items: center;
+    }
+    .bandeira-idioma {
+      width: 25px;
+      margin-right: 10px;
+    }

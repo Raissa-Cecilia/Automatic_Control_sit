@@ -1,0 +1,146 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.automatic {
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+.control {
+  font-weight: bold;
+  color: #F2B138;
+  cursor: pointer;
+}
+
+.notification-icon,
+.profile-icon {
+  font-size: 2rem;
+  color: #F2B138;
+  cursor: pointer;
+}
+
+.nav-link {
+    color: #fff;
+    transition: color 0.3s;
+  }
+  .nav-link:hover,
+  .nav-link:hover i,
+  .nav-link:hover div {
+    color: #F2B138 ;
+    cursor: pointer;
+  }
+
+
+
+.chat-box {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.mensagem-usuario {
+  background-color: #e9ecef;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  max-width: 80%;
+  position: relative;
+}
+
+.mensagem-admin {
+  background-color: #022859;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  margin-left: 20%;
+  max-width: 80%;
+}
+
+.mensagem-admin-item {
+  background-color: white;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.mensagem-admin-item:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.resposta-admin {
+  border-left: 3px solid #022859;
+  padding-left: 0.75rem;
+}
+
+.btn-warning {
+  background-color: #F2B138;
+  border-color: #F2B138;
+  color: #022859;
+}
+
+.btn-warning:hover {
+  background-color: #e0a529;
+  border-color: #e0a529;
+}
+
+.btn-primary {
+  background-color: #022859;
+  border-color: #022859;
+}
+
+.btn-primary:hover {
+  background-color: #011a3a;
+  border-color: #011a3a;
+}
+
+/* Estilos para scrollbar */
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #022859;
+  border-radius: 4px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: #011a3a;
+}
+
+/* Novos estilos para ações */
+.mensagem-acoes {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  min-width: auto;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .mensagem-usuario,
+  .mensagem-admin {
+    max-width: 90%;
+  }
+  
+  .mensagem-admin {
+    margin-left: 10%;
+  }
+}

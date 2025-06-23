@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatic Control</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="categoria.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+  
+  <header class="navbar" style="background-color: #022859;">
+    <div class="container-fluid d-flex align-items-center justify-content-between px-3 text-white">
+      <div class="d-flex align-items-center">
+        <img src="logo.jpeg" height="50" width="50" alt="Logo">
+        <h1 class="ms-3 mb-0 d-flex align-items-center">
+          <span class="automatic">Automatic</span>
+          <span class="control ms-1">Control</span>
+        </h1>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a href="../suporte/suporte.html" class="btn help-btn text-white text-decoration-none">?</a>
+
+        <i class="fas fa-bell notification-icon"></i>
+        <button class="btn p-0"><i class="fas fa-user-circle profile-icon"></i></button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+          <span class="fas fa-bars text-white"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="offcanvas offcanvas-start text-white" style="background-color: #022859;" tabindex="-1" id="sidebar">
+    <div class="offcanvas-body p-0">
+      <nav class="nav flex-column text-center py-4">
+        <a href="../pesquisa/pesquisa.html" class="nav-link  py-4"><i class="fas fa-search fa-2x"></i><div>Pesquisa</div></a>
+        <a href="../cadastro/cadastroP.html" class="nav-link py-4"><i class="fas fa-pencil-alt fa-2x"></i><div>Cadastros</div></a>
+        <a href="categoria.html" class="nav-link  py-4"><i class="bi bi-collection fa-2x"></i><div>Categorias</div></a>
+        <a href="../grafico/grafico.html" class="nav-link  py-4"><i class="fas fa-chart-line fa-2x"></i><div>Gráficos</div></a>
+        <a href="../relatorio/relatorio.html" class="nav-link  py-4"><i class="fas fa-file-alt fa-2x"></i><div>Relatórios</div></a>
+        <a href="../configuracao/configuracao.html" class="nav-link  py-4"><i class="fas fa-cog fa-2x"></i><div>Configuração</div></a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+        <header>
+            <h1>Gerenciamento de Categorias</h1>
+        </header>
+        
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Pesquisar categorias...">
+            <button class="search-button"><i class="fas fa-search"></i></button>
+            <button class="add-button" id="addCategoryBtn"><i class="fas fa-plus"></i> Nova Categoria</button>
+        </div>
+        
+        <div class="categories-grid" id="categoriesGrid"></div>
+        
+        <div  class="products-panel" id="productsPanel" style="display: none;">
+            <div class="products-panel-header">
+            <button class="back-button"><i class="fas fa-arrow-left"></i> Voltar</button>
+            <h2 id="current-category-name">Nome da Categoria</h2>
+            <button class="add-button ms-auto" id="addProductBtn"><i class="fas fa-plus"></i> Adicionar Item</button>
+            <button class="exit-category-btn" id="exitCategoryBtn"><i class="fas fa-times"></i> Sair</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+            <!-- Formulário de Adicionar Categoria -->
+        <div class="add-category-form" id="addCategoryForm" style="display: none;">
+            <div class="form-header">
+                <h2 class="form-title">Adicionar Nova Categoria</h2>
+                <button class="close-btn">&times;</button>
+        </div>
+        <form id="newCategoryForm">
+            <div class="form-group">
+                <label class="required-field">Nome da Categoria</label>
+                <input type="text" id="newCategoryName" required>
+            </div>
+            <div class="form-group">
+                <label>Ícone (Font Awesome)</label>
+                <input type="text" id="newCategoryIcon" placeholder="Ex: fa-box">
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelCategoryBtn">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Formulário de Adicionar Item -->
+    <div class="add-item-form" id="addItemForm" style="display: none;">
+        <div class="form-header">
+            <h2 class="form-title">Adicionar Novo Item</h2>
+            <button class="close-btn">&times;</button>
+        </div>
+        <div class="category-context">
+            <i class="fas fa-folder"></i>
+            <span id="currentCategoryName">Medicamentos</span>
+        </div>
+        <form id="newItemForm">
+            <div class="form-group">
+                <label class="required-field">Nome do Item</label>
+                <input type="text" id="newItemName" required>
+            </div>
+            <div class="form-group">
+                <label>Código</label>
+                <input type="text" id="newItemCode">
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea id="newItemDescription" rows="3"></textarea>
+            </div>
+            <div class="controlled-medicine-section">
+                <label class="controlled-medicine-label">
+                    <input type="checkbox" id="newItemControlled"> Medicamento Controlado
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelItemBtn">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    
+    <!-- Modal Categoria -->
+    <div class="modal" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Adicionar Nova Categoria</h3>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="categoryForm">
+                <input type="hidden" id="categoryId">
+                <div class="form-group">
+                    <label for="categoryName">Nome da Categoria</label>
+                    <input type="text" id="categoryName" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoryIcon">Ícone (Classe Font Awesome)</label>
+                    <input type="text" id="categoryIcon" placeholder="Ex: fa-utensils">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal Confirmação Exclusão Categoria -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirmar Exclusão</h3>
+                <button class="close-btn" id="closeConfirmModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir esta categoria? Esta ação não pode ser desfeita.</p>
+                <p id="categoryToDeleteName" style="font-weight: bold;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Produto -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="productModalTitle">Adicionar Novo Produto</h3>
+                <button class="close-btn" id="closeProductModalBtn">&times;</button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <input type="hidden" id="productCategoryId">
+                <div class="form-group">
+                    <label for="productCode">Código</label>
+                    <input type="text" id="productCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Nome do Produto</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Descrição</label>
+                    <textarea id="productDescription" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelProductBtn">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal Confirmação Exclusão Produto -->
+    <div class="modal" id="confirmProductModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirmar Exclusão</h3>
+                <button class="close-btn" id="closeConfirmProductModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir este produto? Esta ação não pode ser desfeita.</p>
+                <p id="productToDeleteName" style="font-weight: bold;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelProductDeleteBtn">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmProductDeleteBtn">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+  <footer class="text-white text-center py-3" style="background-color: #022859;">
+    © 2025 Automatic Control. Todos os direitos reservados.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="categoria.js"></script>
+</body>
+</html>

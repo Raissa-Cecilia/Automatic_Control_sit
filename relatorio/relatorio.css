@@ -1,0 +1,93 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.topo {
+  background: linear-gradient(to right, #022859, #001f3f);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  margin-right: 10px;
+}
+.menu-lateral {
+  background-color: #022859;
+  color: white;
+  width: 200px;
+  min-height: calc(100vh - 60px);
+  padding-top: 20px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+}
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+}
+.menu-lateral ul li {
+  padding: 10px 20px;
+}
+.menu-lateral ul li.ativo,
+.menu-lateral ul li:hover {
+  background-color: #F2B138;
+  color: black;
+}
+.menu-lateral ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+.conteudo {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+}
+.filtros,
+.controle-tabela {
+  margin-bottom: 20px;
+}
+button {
+  background-color: #F2B138;
+  border: none;
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #e0a62b;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+tfoot td {
+  font-weight: bold;
+  background-color: #F2B138;
+}
+footer {
+  background-color: #022859;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+}

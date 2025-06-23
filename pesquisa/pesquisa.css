@@ -1,0 +1,83 @@
+ .help-btn {
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #ffffff;
+  border: 1px solid #022859;
+  background-color: #F2B138;
+  font-weight: bold;
+}
+
+.notification-icon,
+.profile-icon {
+  font-size: 2rem;
+  color: #F2B138;
+  cursor: pointer;
+}
+
+.nav-link {
+  color: #fff;
+  transition: color 0.3s;
+}
+.nav-link:hover,
+.nav-link:hover i,
+.nav-link:hover div {
+  color: #F2B138;
+  cursor: pointer;
+}
+ .card-pesquisa {
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .card-produto {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .card-produto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .imagem-produto {
+      height: 180px;
+      object-fit: contain;
+      background-color: #f8f9fa;
+      padding: 10px;
+    }
+    
+    .badge-vencimento {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+    }
+    
+    .sem-resultados {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+    }
+    
+    .filtro-avancado {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    
+    .filtro-avancado.mostrar {
+      max-height: 500px;
+    }
+    
+    @media (max-width: 768px) {
+      .imagem-produto {
+        height: 150px;
+      }
+    }
